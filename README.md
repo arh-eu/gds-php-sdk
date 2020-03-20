@@ -1,8 +1,15 @@
 ## Installation
 
-The library can be installed as a composer package. The source code for the package is available [here](https://github.com/arh-eu/gds/tree/master/src/examples/messages/php). For now, the package has not been uploaded to a public repository so you can download it and import locally.
+The library can be installed as a composer package.
 
+Include this repository in your composer.json:
 
+```JSON
+"repositories": [ {
+        "type": "vcs",
+        "url": "https://github.com/arh-eu/gds-php-messages.git"
+}]
+```
 
 ## Examples
 
