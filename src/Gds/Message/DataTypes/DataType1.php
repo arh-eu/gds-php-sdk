@@ -55,7 +55,7 @@ class DataType1 implements \App\Gds\Message\ResponseData
             return new self($data[0], $data[1], $data[2], $data[3], $data[4][0]);
         }
         else {
-            return new self($data[1], $data[2], $data[3], $data[4], null);
+            return new self($data[0], $data[1], $data[2], $data[3], null);
         }
     }
 }
