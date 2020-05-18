@@ -63,7 +63,7 @@ class DataType2 implements \App\Gds\Message\MessageData
     {
         return array(
             $this->sql, 
-            $this->binaryContents == null ? new \MessagePack\Type\Map([]) : $this->binaryContents, 
+            $this->binaryContents == null ? new \MessagePack\Type\Map([]) : new \MessagePack\Type\Map($this->binaryContents), 
             $this->executionPriorityStructure == null ? [] : $this->executionPriorityStructure);
     }
 

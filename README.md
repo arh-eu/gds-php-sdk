@@ -11,6 +11,12 @@ Include this repository in your composer.json:
 }]
 ```
 
+```JSON
+"require": {
+	"arh/gds-messages": "@dev"
+}
+```
+
 ## Examples
 
 ### Create the Connection
