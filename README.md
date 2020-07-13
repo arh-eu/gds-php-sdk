@@ -1,6 +1,6 @@
 ## Installation
 
-The library can be installed as a composer package.
+The library can be installed as a composer package. To install you need php version `>=7.0`.
 
 Include this repository in your composer.json:
 
