@@ -30,7 +30,7 @@ $header = new \App\Gds\Message\MessageHeader("user", "0292cbc8-df50-4e88-8be9-db
 
 After that, we create the data part.
 ```php
-$data = new App\Gds\Message\DataTypes\DataType4("SELECT * FROM \"events-@attachment\" WHERE id='ATID202001010000000000' and ownerid='EVNT202001010000000000' FOR UPDATE WAIT 86400");
+$data = new App\Gds\Message\DataTypes\DataType4("SELECT * FROM \"multi_event-@attachment\" WHERE id='TEST2006301005294740' and ownerid='TEST2006301005294810' FOR UPDATE WAIT 86400");
 ```
 
 Once we have a header and a data, we can create the message object.
@@ -49,7 +49,7 @@ First, you need to specify your connection details.
 
 ```php
 $connectionInfo = new \App\Gds\ConnectionInfo(
-        "ws://user@127.0.0.1:8080/gate",
+        "ws://user@127.0.0.1:8888/gate",
         \App\Gds\Message\FragmentationInfo::noFragmentation(),
         true,
         0x01000000,
@@ -92,8 +92,8 @@ So, create the event message first.
 
 ```php
 $eventMessageHeader = new \App\Gds\Message\MessageHeader("user", "0dc35f9d-ad70-46aa-8983-e57880b53c8b", time(), time(), App\Gds\Message\FragmentationInfo::noFragmentation(), 2);
-$operationsStringBlock = "INSERT INTO events (id, some_field, images) VALUES('EVNT202001010000000000', 'some_field', array('ATID202001010000000000'));INSERT INTO \"events-@attachment\" (id, meta, data) VALUES('ATID202001010000000000', 'some_meta', 0x62696e6172795f6964315f6578616d706c65)";
-$binaryContentsMapping = array("62696e6172795f69645f6578616d706c65" => pack("C*", 23, 17, 208));
+$operationsStringBlock = "INSERT INTO multi_event (id, plate, speed, images) VALUES('TEST2006301005294810', 'ABC123', 90, array('TEST2006301005294740'));INSERT INTO \"multi_event-@attachment\" (id, meta, data) VALUES('TEST2006301005294740', 'some_meta', 0x62696e6172795f69645f31)";
+$binaryContentsMapping = array("62696e6172795f69645f31" => pack("C*", 23, 17, 208));
 $eventMessageData = new App\Gds\Message\DataTypes\DataType2($operationsStringBlock, $binaryContentsMapping, null);
 $eventMessage = new \App\Gds\Message\Message($eventMessageHeader, $eventMessageData);
 ```
