@@ -70,7 +70,7 @@ Last, youd need to create the EventLoop object:
 $eventLoop = new React\EventLoop\StreamSelectLoop();
 ```
 
-After that, you can specify you connection as follows:
+After that, you can specify your connection as follows:
 
 ```php
 $connection = new \App\Gds\Connection($connectionInfo, $eventLoop, $logger);
@@ -85,7 +85,7 @@ $gateway =  new \App\Gds\Gateway($connection, array('timeout' => 10), $logger);
 Finally, you need to create your own Endpoint implementation. To do this, you need to implement the App\Gds\Endpoint class. 
 A basic implementation (CustomEndpoint) can be found under the App\Gds namespace.
 
-First, we create an event message. With this message, and with the previously createad gateway, we can specify our endpoint.
+First, we create an event message. With this message, and with the previously created gateway, we can specify our endpoint.
 It is not necessary to explicit create and send a connection message before any other message because it is done in the background based on the connection info.
 
 So, create the event message first.
