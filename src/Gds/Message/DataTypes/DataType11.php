@@ -35,14 +35,16 @@ class DataType11 implements \App\Gds\Message\ResponseData
     private $queryContext;
     private $fieldDescriptors;
     private $records;
+    private $totalHits;
 
-    public function __construct(int $rowCount, bool $isLastPage, QueryContext $context, array $fieldDescriptors, array $records)
+    public function __construct(int $rowCount, bool $isLastPage, QueryContext $context, array $fieldDescriptors, array $records, int $totalHits)
     {
         $this->rowCount = $rowCount;
         $this->isLastPage = $isLastPage;
         $this->queryContext = $context;
         $this->fieldDescriptors = $fieldDescriptors;
         $this->records = $records;
+        $this->totalHits = $totalHits;
     }
 
     public function getType(): int
@@ -52,7 +54,7 @@ class DataType11 implements \App\Gds\Message\ResponseData
 
     public static function fromArray(array $data) : \App\Gds\Message\ResponseData
     {
-        return new self($data[0], !$data[2], QueryContext::fromArray($data[3]), $data[4], $data[5]);
+        return new self($data[0], !$data[2], QueryContext::fromArray($data[3]), $data[4], $data[5], (array_key_exists(6, $data) ? $data[6] : 0) );
     }
 
     public function getRowCount(): int
@@ -78,5 +80,10 @@ class DataType11 implements \App\Gds\Message\ResponseData
     public function getRecords(): array
     {
         return $this->records;
+    }
+
+    public function getTotalHits(): int
+    {
+        return $this->totalHits;
     }
 }
