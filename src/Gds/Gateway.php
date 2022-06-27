@@ -163,10 +163,12 @@ class Gateway
                 case 400: $e = new \App\Gds\Exception\BadRequestException($exceptionMessage); break;
                 case 401: $e = new \App\Gds\Exception\UnauthorizedException($exceptionMessage); break;
                 case 403: $e = new \App\Gds\Exception\AccessDeniedException($exceptionMessage); break;
+                case 405: $e = new \App\Gds\Exception\MethodNotAllowedException($exceptionMessage); break;
                 case 406: $e = new \App\Gds\Exception\NotAcceptableException($exceptionMessage); break;
                 case 408: $e = new \App\Gds\Exception\RequestTimeoutException($exceptionMessage); break;
                 case 409: $e = new \App\Gds\Exception\ConflictException($exceptionMessage); break;
                 case 412: $e = new \App\Gds\Exception\PreconditionFailedException($exceptionMessage); break;
+                case 417: $e = new \App\Gds\Exception\ExpectationFailedException($exceptionMessage); break;
                 case 429: $e = new \App\Gds\Exception\TooManyRequestsException($exceptionMessage); break;
                 case 500: $e = new \App\Gds\Exception\InternalServerErrorException($exceptionMessage); break;
                 case 509: $e = new \App\Gds\Exception\BandwidthLimitExceededException($exceptionMessage); break;
